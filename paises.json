@@ -1,0 +1,114 @@
+{
+    "categoria":[
+    {
+        "nome":"Europa",
+        "photo":"https://raw.githubusercontent.com/lluiscase/EasyMed/refs/heads/main/assets/icons/medicamento.png",
+        "produtos":[
+            {
+                "id":"1",
+                "nome":"Alemanha",
+                "preco":"R$ 1900,00",
+                "descricao":" O ibuprofeno é um medicamento anti-inflamatório não esteroide (AINE) amplamente utilizado para aliviar a dor,reduzir a inflamação e diminuir a febre. É um dos AINEs mais comuns e é vendido tanto com prescrição médica quanto sem ela.",
+                "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLK4lqZKHVN2g5Ia3yIv-tP8hlHJdGbr1IvQ&s"
+            },
+            {
+                "id":"2",
+                "nome":"França",
+                "preco":"R$1500,00",
+             "descricao":"é um medicamento anti-inflamatório não esteroide (AINE) utilizado para aliviar a dor, reduzir a inflamação e diminuir a febre. É também conhecida por suas propriedades antiplaquetárias, ou seja, pode ajudar a prevenir a formação de coágulos sanguíneos.",
+                "foto": "https://paguemenos.vtexassets.com/arquivos/ids/274392/Analgesico-Aspirina-500mg-a%E2%82%AC%E2%80%9C-caixa-com-20-comprimidos-Pague-Menos-43534-2.jpg?v=637305908740470000"
+      
+            },
+            {
+                "id":"3",
+                "nome":"Croacia",
+                "preco":"R$2400,00",
+                "descricao":" O naproxeno é um medicamento anti-inflamatório não esteroide (AINE) utilizado para aliviar a dor-Moderada, reduzir a inflamação e diminuir a febre. É eficaz no tratamento de várias condições que envolvem dor e inflamação.",
+                "foto": "https://www.drogarianovaesperanca.com.br/imagens/600x600/naproxeno-sodico-550mg-com-20-comprimidos-04f87525e1.jpg"
+
+            }
+        ]
+    },
+    {
+        "nome":"America do Norte",
+        "photo":"https://raw.githubusercontent.com/lluiscase/EasyMed/refs/heads/main/assets/icons/creme.png",
+        "produtos":[
+            {
+                "id": "1",
+                "nome": "Mexico",
+                "preco": "1200,00",
+                "descricao": "O Batom líquido By Karen Bachini apresenta uma fórmula inovadora com textura aveludada, que confere efeito mate e aplicação altamente confortável. Se espalha uniformemente e não marca as linhas dos lábios, revelando cor intensa e efeito ultra-mate. O produto contém 3,8 ml",
+                "foto": "https://drogariasp.vteximg.com.br/arquivos/ids/1068556-500-500/image-33078483b2434fb89636c0ff01cae7af.jpg?v=638457808353000000"
+            },
+            {
+                "id": "2",
+                "nome": "Estados Unidos",
+                "preco": "2200,00",
+                "descricao": "Caneta Delineadora Líquida Matte Fran by Franciny Ehlke Black é extremamente precisa. A ponta macia oferece deslizamento e controle na aplicação, proporcionando variações de traços, desde os mais finos aos mais dramáticos. Com pigmentos super black e à prova d'água, o produto seca rapidamente e não transfere!",
+                "foto": "https://cdn.iset.io/assets/70914/produtos/171/5989e1511894237bc821539f0ce2bd12653e595f383e3.png"
+            },
+            {
+                "id": "3",
+                "nome": "Canada",
+                "preco": "1800,00",
+                "descricao": "Base Líquida Matte Eudora Niina Secrets Daily Tint Cream Cor 70 proporciona acabamento matte com efeito segunda pele, uniformiza o tom de pele, camuflando olheiras e vermelhidões sem marcar as linhas de expressão.",
+                "foto":"https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_800/v1/imagens/products/E48104/_NIINA_SECRET_BASE_PERFECT_MATCH_COR5_E48104.jpg"
+            }
+        ]
+    },
+    {
+        "nome":"America do Sul",
+        "photo":"https://raw.githubusercontent.com/lluiscase/EasyMed/refs/heads/main/assets/icons/produtos_de_higiene_pessoal.png",
+        "produtos":[
+            {
+                "id": "1",
+                "nome": "Brasil",
+                "preco": "1200,00",
+                "descricao": "A fórmula é elaborada por uma combinação única e exclusiva de ingredientes botânicos naturais. Além disso, o sabonete foi especialmente produzido para proporcionar uma sensação aveludada na sua pele, tornando o banho o início de qualquer ritual de beleza, deixando a sua pele preparada para receber os próximos cuidados.",
+                "foto": "https://www.perfumariasumire.com.br/media/catalog/product/s/a/sabonete_liquido_lux_botanicals_orquidea_negra_250ml.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=563&width=553&canvas=553:563"
+            },
+            {
+                "id": "2",
+                "nome": "Argentina",
+                "preco": "700,00",
+                "descricao": "Absorvente com abas e cobertura de malha seca. Possui formato anatômico que se adapta ao corpo. Conta com barreiras antivazamentos e sistema antiumidade. Proporciona absorção instantânea e segura ao longo do dia. Mantém a pele protegida e livre de umidade.",
+                "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrxCzrSmHwrXsk4p9Ng8kNuul_Pch1uXx6EA&s"
+            },
+            {
+                "id": "3",
+                "nome": "Chile",
+                "preco": "800,00",
+                "descricao": "100% em algodão. Conforto e cuidado para a pele. Altamente absorvente. Não solta fiapos e não desfia. Contém 150 unidades.",
+                "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17M9tKXcXRTiWhtkqfTbO9rQuS_84DdQlKw&s"
+            }
+        ]
+    },
+    {
+        "nome":"Asia",
+        "photo": "https://raw.githubusercontent.com/lluiscase/EasyMed/refs/heads/main/assets/icons/baby-stroller.png",
+        "produtos":[
+            {
+                "id": "1",
+                "nome": "Coreia do Sul",
+                "preco": "2800,00",
+                "descricao": "A Mamadeira Anticólica NUK Essence Smart Flow é produzido em silicone macio e extra flexível contém área Soft Zone com textura agradável que permite um toque suave na boca e nos lábios do bebê. O frasco de 150ml acompanha o bico tamanho S com 3 furos sendo indicado para bebês 0+ meses e recomendado para líquidos ralos, como por exemplo: leite materno, chá e água. Livre de BPA.",
+                "foto": "https://cdn.awsli.com.br/600x700/389/389011/produto/224016606/mamadeira-essence-tc-smart-flow-270ml-boy-nuk-165e3bdc-ooimgx7ha0.jpg"
+            },
+            {
+                "id":"2",
+                "nome":"Japão",
+                "preco":"3200,00",
+                "descricao":"Com alto poder de absorção e reforço de barreiras antivazamento, para o conforto dos pequenos, Pampers Confort Sec contém canais de ar que permitem uma circulação livre do ar dentro da fralda, evitando que o bumbum do bebê fique abafado e deixando a pele arejada e sequinha.",
+                "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYoAJCTCOGWUw0D6Y1qAzwdBAaoURWwc1Tjw&s"
+            },
+            {
+                "id":"3",
+                "nome":"China",
+                "preco":"R$ 3500,00",
+                "descricao":"Escova de dente infantil ultra macia",
+                "foto":"https://www.loja.curaprox.com.br/uploads/1684330726.jpg"
+            }
+        ]
+    }
+    ]
+}
