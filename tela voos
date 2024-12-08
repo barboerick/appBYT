@@ -72,106 +72,126 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.network(
-                'https://raw.githubusercontent.com/barboerick/appBYT/refs/heads/main/visao-privilegiada-cristo.jpg',
-                height: 100,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Seus Destinos',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 16),
+            Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
-              SizedBox(height: 16),
-              Wrap(
-                spacing: 8.0,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ChoiceChip(
-                    label: Text('Praias'),
-                    selected: false,
-                  ),
-                  ChoiceChip(
-                    label: Text('Esportes'),
-                    selected: false,
-                  ),
-                  ChoiceChip(
-                    label: Text('Monumentos'),
-                    selected: false,
+                  ClipRRect(
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                    child: Image.network(
+                      'https://raw.githubusercontent.com/barboerick/appBYT/refs/heads/main/BRASIL.jpg',
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ],
               ),
-              SizedBox(height: 16),
-              FlightOption(
-                price: 'R\$ 650,00',
-                date: '21 Out',
-                time: '14h25',
-                airlineImage: 'https://example.com/voepass.jpg',
-                selected: selectedFlight == 'VOEPASS',
-                onSelected: () {
-                  setState(() {
-                    selectedFlight = 'VOEPASS';
-                  });
-                },
-              ),
-              FlightOption(
-                price: 'R\$ 770,00',
-                date: '21 Out',
-                time: '11h00',
-                airlineImage: 'https://example.com/gol.jpg',
-                selected: selectedFlight == 'GOL',
-                onSelected: () {
-                  setState(() {
-                    selectedFlight = 'GOL';
-                  });
-                },
-              ),
-              FlightOption(
-                price: 'R\$ 820,00',
-                date: '22 Out',
-                time: '05h45',
-                airlineImage: 'https://example.com/latam.jpg',
-                selected: selectedFlight == 'LATAM',
-                onSelected: () {
-                  setState(() {
-                    selectedFlight = 'LATAM';
-                  });
-                },
-              ),
-              FlightOption(
-                price: 'R\$ 900,00',
-                date: '20 Out',
-                time: '22h30',
-                airlineImage: 'https://example.com/azul.jpg',
-                selected: selectedFlight == 'Azul',
-                onSelected: () {
-                  setState(() {
-                    selectedFlight = 'Azul';
-                  });
-                },
-              ),
-              SizedBox(height: 16),
-              Center(
-                child: ElevatedButton(
-                  onPressed: selectedFlight != null
-                      ? () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Pagamento(),
-                            ),
-                          );
-                          // Lógica para comprar
-                        }
-                      : null,
-                  child: Text('Comprar'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  ),
+            ),
+            SizedBox(height: 16),
+            Wrap(
+              spacing: 8.0,
+              children: [
+                ChoiceChip(
+                  label: Text('Praias'),
+                  selected: false,
+                ),
+                ChoiceChip(
+                  label: Text('Esportes'),
+                  selected: false,
+                ),
+                ChoiceChip(
+                  label: Text('Monumentos'),
+                  selected: false,
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            FlightOption(
+              price: 'R\$ 650,00',
+              date: '21 Out',
+              time: '14h25',
+              airline: 'VOEPASS',
+              selected: selectedFlight == 'VOEPASS',
+              onSelected: () {
+                setState(() {
+                  selectedFlight = 'VOEPASS';
+                });
+              },
+            ),
+            FlightOption(
+              price: 'R\$ 770,00',
+              date: '21 Out',
+              time: '11h00',
+              airline: 'GOL',
+              selected: selectedFlight == 'GOL',
+              onSelected: () {
+                setState(() {
+                  selectedFlight = 'GOL';
+                });
+              },
+            ),
+            FlightOption(
+              price: 'R\$ 820,00',
+              date: '22 Out',
+              time: '05h45',
+              airline: 'LATAM',
+              selected: selectedFlight == 'LATAM',
+              onSelected: () {
+                setState(() {
+                  selectedFlight = 'LATAM';
+                });
+              },
+            ),
+            FlightOption(
+              price: 'R\$ 900,00',
+              date: '20 Out',
+              time: '22h30',
+              airline: 'Azul',
+              selected: selectedFlight == 'Azul',
+              onSelected: () {
+                setState(() {
+                  selectedFlight = 'Azul';
+                });
+              },
+            ),
+            SizedBox(height: 16),
+            Center(
+              child: ElevatedButton(
+                onPressed: selectedFlight != null
+                    ? () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Pagamento(),
+                          ),
+                        );
+                        // Lógica para comprar
+                      }
+                    : null,
+                child: Text('Comprar', style: TextStyle(fontSize: 18, color: Colors.white)),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                minimumSize: Size(double.infinity, 50),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -198,7 +218,7 @@ class FlightOption extends StatelessWidget {
   final String price;
   final String date;
   final String time;
-  final String airlineImage;
+  final String airline;
   final bool selected;
   final VoidCallback onSelected;
 
@@ -206,7 +226,7 @@ class FlightOption extends StatelessWidget {
     required this.price,
     required this.date,
     required this.time,
-    required this.airlineImage,
+    required this.airline,
     required this.selected,
     required this.onSelected,
   });
@@ -225,7 +245,7 @@ class FlightOption extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(12.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -234,14 +254,14 @@ class FlightOption extends StatelessWidget {
                 children: [
                   Text(
                     price,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                   Text('$date | $time'),
                 ],
               ),
-              Image.network(
-                airlineImage,
-                height: 50,
+              Text(
+                airline,
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ],
           ),
