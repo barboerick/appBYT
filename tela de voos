@@ -1,0 +1,247 @@
+import 'package:flutter/material.dart';
+import 'package:myapp/pagamentos.dart';
+import 'package:myapp/explorar.dart';
+import 'package:myapp/perfil.dart';
+
+void main() {
+  runApp(Compra(preco: '', data: '', horario: '', airline: ''));
+}
+
+class Compra extends StatelessWidget {
+  final String preco;
+  final String data;
+  final String horario;
+  final String airline;
+
+  const Compra(
+      {super.key,
+      required this.preco,
+      required this.data,
+      required this.horario,
+      required this.airline});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: FlightBookingScreen(),
+    );
+  }
+}
+
+class FlightBookingScreen extends StatefulWidget {
+  @override
+  _FlightBookingScreenState createState() => _FlightBookingScreenState();
+}
+
+class _FlightBookingScreenState extends State<FlightBookingScreen> {
+  String? selectedFlight;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('BYT'),
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Explorar(),
+              ),
+            );
+          },
+        ),
+        actions: [
+            IconButton(
+              icon: Icon(Icons.favorite_border),
+              onPressed: () {
+                
+              },
+            ),
+          IconButton(
+            icon: Icon(Icons.person_outline),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Perfil(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.network(
+                  'https://raw.githubusercontent.com/barboerick/appBYT/refs/heads/main/visao-privilegiada-cristo.jpg',
+                  height: 100),
+              SizedBox(height: 16),
+              Wrap(
+                spacing: 8.0,
+                children: [
+                  ChoiceChip(
+                    label: Text('Praias'),
+                    selected: false,
+                  ),
+                  ChoiceChip(
+                    label: Text('Esportes'),
+                    selected: false,
+                  ),
+                  ChoiceChip(
+                    label: Text('Monumentos'),
+                    selected: false,
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              FlightOption(
+                price: 'R\$ 650,00',
+                date: '21 Out',
+                time: '14h25',
+                airline: 'VOEPASS',
+                selected: selectedFlight == 'VOEPASS',
+                onSelected: () {
+                  setState(() {
+                    selectedFlight = 'VOEPASS';
+                  });
+                },
+              ),
+              FlightOption(
+                price: 'R\$ 770,00',
+                date: '21 Out',
+                time: '11h00',
+                airline: 'GOL',
+                selected: selectedFlight == 'GOL',
+                onSelected: () {
+                  setState(() {
+                    selectedFlight = 'GOL';
+                  });
+                },
+              ),
+              FlightOption(
+                price: 'R\$ 820,00',
+                date: '22 Out',
+                time: '05h45',
+                airline: 'LATAM',
+                selected: selectedFlight == 'LATAM',
+                onSelected: () {
+                  setState(() {
+                    selectedFlight = 'LATAM';
+                  });
+                },
+              ),
+              FlightOption(
+                price: 'R\$ 900,00',
+                date: '20 Out',
+                time: '22h30',
+                airline: 'Azul',
+                selected: selectedFlight == 'Azul',
+                onSelected: () {
+                  setState(() {
+                    selectedFlight = 'Azul';
+                  });
+                },
+              ),
+              SizedBox(height: 16),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Pagamento()));
+                    // Lógica para comprar
+                  },
+                  child: Text('Comprar'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Explorar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.flight),
+            label: 'Viagens',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Interesses',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FlightOption extends StatelessWidget {
+  final String price;
+  final String date;
+  final String time;
+  final String airline;
+  final bool selected;
+  final VoidCallback onSelected;
+
+  FlightOption({
+    required this.price,
+    required this.date,
+    required this.time,
+    required this.airline,
+    required this.selected,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onSelected,
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(
+            color: selected ? Colors.blue : Colors.transparent,
+            width: 2,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    price,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text('$date | $time'),
+                ],
+              ),
+              Text(
+                airline,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
