@@ -1,0 +1,260 @@
+import 'package:flutter/material.dart';
+import 'package:myapp/pedidoconfirmado.dart';
+import 'package:myapp/compra.dart';
+import 'package:myapp/notificação.dart';
+import 'package:myapp/perfil.dart';
+
+void main() {
+  runApp(Pagamento());
+}
+
+class Pagamento extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: TicketPurchaseScreen(),
+    );
+  }
+}
+
+class TicketPurchaseScreen extends StatefulWidget {
+  @override
+  _TicketPurchaseScreenState createState() => _TicketPurchaseScreenState();
+}
+
+class _TicketPurchaseScreenState extends State<TicketPurchaseScreen> {
+  String? selectedPaymentMethod;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('BYT'),
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Compra(preco: '', data: '', horario: '', airline: ''),
+              ),
+            );
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Notifications(),
+                ),
+              );
+            },
+          ),
+
+      
+          IconButton(
+            icon: Icon(Icons.share),
+            onPressed: () {
+      
+            },
+          ),
+        );
+      },
+    ),
+          IconButton(
+            icon: Icon(Icons.favorite_border),
+            onPressed: () {
+
+            },
+         ),
+        );
+      },
+    ),
+
+
+          IconButton(
+            icon: Icon(Icons.person_outline),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Perfil(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.network(
+                    'https://raw.githubusercontent.com/barboerick/appBYT/refs/heads/main/visao-privilegiada-cristo.jpg',
+                    height: 100,
+                  ), // Certifique-se de ter a imagem correta no diretório assets
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Cristo Redentor',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text('Rio de Janeiro, Brasil'),
+                        SizedBox(height: 8),
+                        Row(
+                          children: [
+                            Chip(
+                              label: Text('Praias'),
+                            ),
+                            SizedBox(width: 4),
+                            Chip(
+                              label: Text('Esportes'),
+                            ),
+                            SizedBox(width: 4),
+                            Chip(
+                              label: Text('Monumentos'),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'R\$ 770,00',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text('21 Out'),
+                            Text('11h00'),
+                            Image.network(
+                              'https://raw.githubusercontent.com/barboerick/appBYT/refs/heads/main/logo_gol.png',
+                              height: 50,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Pague com',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            PaymentOption(
+              label: 'PIX',
+              icon: Icons.qr_code,
+              selected: selectedPaymentMethod == 'PIX',
+              onSelected: () {
+                setState(() {
+                  selectedPaymentMethod = 'PIX';
+                });
+              },
+            ),
+            PaymentOption(
+              label: '**** 0231',
+              icon: Icons.credit_card,
+              selected: selectedPaymentMethod == 'CARTAO',
+              onSelected: () {
+                setState(() {
+                  selectedPaymentMethod = 'CARTAO';
+                });
+              },
+            ),
+            PaymentOption(
+              label: 'Adicionar cartão',
+              icon: Icons.add,
+              selected: selectedPaymentMethod == 'ADICIONAR_CARTAO',
+              onSelected: () {
+                setState(() {
+                  selectedPaymentMethod = 'ADICIONAR_CARTAO';
+                });
+              },
+            ),
+            Spacer(),
+            ElevatedButton(
+              onPressed: selectedPaymentMethod != null
+                  ? () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PedidoConfirmado(),
+                        ),
+                      );
+                      // Lógica para comprar
+                    }
+                  : null,
+              child: Center(
+                child: Text('Comprar'),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                padding: EdgeInsets.symmetric(vertical: 16),
+                minimumSize: Size(double.infinity, 50),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PaymentOption extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final bool selected;
+  final VoidCallback onSelected;
+
+  const PaymentOption({
+    required this.label,
+    required this.icon,
+    required this.selected,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onSelected,
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(
+            color: selected ? Colors.blue : Colors.transparent,
+            width: 2,
+          ),
+        ),
+        child: ListTile(
+          leading: Icon(icon),
+          title: Text(label),
+        ),
+      ),
+    );
+  }
+}
